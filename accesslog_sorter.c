@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
 	
 /* ---- Whole file is now in buffer, continue with writing file style ---- */
 	
-	pFout_log = fopen("/home/$USER/http-serverlog.txt", "w");
+	pFout_log = fopen("/home/server/http-serverlog.txt", "w");
 	
 	fputs("Domain\tPort\tIP-Adress\tTimestamp\tURL\tUser-Agent\tOS", pFout_log);
 	
@@ -166,9 +166,7 @@ int main(int argc, char *argv[])
 		
 		counter++;
 	}
-	
-	
-	
+		
 	fclose(pFout_log);
 	free(file_buffer);
 	return 0;
