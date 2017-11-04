@@ -14,6 +14,8 @@ int main(int argc, char *argv[])
 	FILE* pFin_log = NULL;
 	FILE* pFout_log = NULL;
 	char *file_buffer = NULL;
+	char *file_buffer_a = NULL;
+	char *file_buffer_b = NULL;
 	size_t newLen = 0;
 	long file_size = 0;
 	
@@ -68,6 +70,8 @@ int main(int argc, char *argv[])
 		}
 		
 		file_buffer = (char *)malloc(sizeof(char) * (file_size +1));
+		file_buffer_a = (char *)malloc(sizeof(char) * (file_size +1));
+		file_buffer_b = (char *)malloc(sizeof(char) * (file_size +1));
 		
 /* ---- Go back to the beginning of the file ---- */
 		
@@ -104,81 +108,83 @@ int main(int argc, char *argv[])
 	
 	linebreak_number = count_characters(file_buffer, '\n');
 	
+	strncpy(file_buffer_a, file_buffer, strlen(file_buffer));
+	
 	while (counter < linebreak_number)
 	{
 /* ---- DOMAIN ---- */
 		
-		part01 = strchr(file_buffer, ':');
+		part01 = strchr(file_buffer_a, ':');
 		
-		strncpy(domain_var, file_buffer, strlen(file_buffer) - strlen(part01));
+		strncpy(domain_var, file_buffer_a, strlen(file_buffer_a) - strlen(part01));
 		fprintf(pFout_log, "%s\t", domain_var);
 		
-		strncpy(file_buffer, file_buffer, strlen(part01));
+		strncpy(file_buffer_b, file_buffer_a, strlen(part01));
 		
 /* ---- PORT ---- */
 		
 		part02 = strchr(file_buffer, ' ');
 		
-		strncpy(port_var, file_buffer, strlen(part01) - strlen(part02));
+		strncpy(port_var, file_buffer_b, strlen(part01) - strlen(part02));
 		fprintf(pFout_log, "%s\t", port_var);
 		
-		strncpy(file_buffer, file_buffer, strlen(part02));
+		strncpy(file_buffer_a, file_buffer_b, strlen(part02));
 		
 /* ---- IP ---- */
 		
 		part03 = strchr(file_buffer, ' ');
 		
-		strncpy(ip_var, file_buffer, strlen(part02) - strlen(part03));
+		strncpy(ip_var, file_buffer_a, strlen(part02) - strlen(part03));
 		fprintf(pFout_log, "%s\t", ip_var);
 		
-		strncpy(file_buffer, file_buffer, strlen(part03));
+		strncpy(file_buffer_b, file_buffer_a, strlen(part03));
 		
 /* ----- TIME ---- */
 		
-		part04 = strchr(file_buffer, '[');
-		part05 = strchr(file_buffer, ' ');
+		part04 = strchr(file_buffer_b, '[');
+		part05 = strchr(file_buffer_b, ' ');
 		
-		strncpy(time_var, file_buffer, strlen(part04) - strlen(part05));
+		strncpy(time_var, file_buffer_b, strlen(part04) - strlen(part05));
 		fprintf(pFout_log, "%s\t", time_var);
 		
-		strncpy(file_buffer, file_buffer, strlen(part05));
+		strncpy(file_buffer_a, file_buffer_b, strlen(part05));
 		
 /* ---- URL ---- */
 		
 		for (i = 0; i < URL_COUNT; i++)
 		{
-			part06 = strchr(file_buffer, '"');
+			part06 = strchr(file_buffer_a, '"');
 		}
-		part07 = strchr(file_buffer, '"');
+		part07 = strchr(file_buffer_a, '"');
 		
-		strncpy(url_var, file_buffer, strlen(part06) - strlen(part07));
+		strncpy(url_var, file_buffer_a, strlen(part06) - strlen(part07));
 		fprintf(pFout_log, "%s\t", url_var);
 		
-		strncpy(file_buffer, file_buffer, strlen(part07));
+		strncpy(file_buffer_b, file_buffer_a, strlen(part07));
 		
 /* ---- USER AGENT ---- */
 		
-		part08 = strchr(file_buffer, '"');
-		part09 = strchr(file_buffer, ' ');
+		part08 = strchr(file_buffer_b, '"');
+		part09 = strchr(file_buffer_b, ' ');
 		
-		strncpy(user_ag_var, file_buffer, strlen(part08) - strlen(part09));
+		strncpy(user_ag_var, file_buffer_b, strlen(part08) - strlen(part09));
 		fprintf(pFout_log, "%s\t", user_ag_var);
 		
-		strncpy(file_buffer, file_buffer, strlen(part09));
+		strncpy(file_buffer_a, file_buffer_b, strlen(part09));
 		
 /* ---- OS ---- */
 		
-		part10 = strchr(file_buffer, '(');
-		part11 = strchr(file_buffer, ')');
+		part10 = strchr(file_buffer_a, '(');
+		part11 = strchr(file_buffer_a, ')');
 		
-		strncpy(os_var, file_buffer, strlen(part10) - strlen(part11));
+		strncpy(os_var, file_buffer_a, strlen(part10) - strlen(part11));
 		fprintf(pFout_log, "%s\n", os_var);
 		
-		strncpy(file_buffer, file_buffer, strlen(file_buffer) - strlen(part11));
+		strncpy(file_buffer_b, file_buffer_a, strlen(file_buffer) - strlen(part11));
 		
-		part12 = strchr(file_buffer, '\n');
+		part12 = strchr(file_buffer_b, '\n');
 		
-		strncpy(file_buffer, file_buffer, strlen(part12));
+		strncpy(file_buffer_a, file_buffer_b, strlen(part12));
 		
 		counter++;
 	}
