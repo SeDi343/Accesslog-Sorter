@@ -20,7 +20,7 @@
 #include <ctype.h>
 #include <unistd.h>
 
-#define DEBUG 0
+#define DEBUG 1
 #define URL_COUNT 3
 #define MAXSIZE 500
 

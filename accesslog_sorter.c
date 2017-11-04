@@ -121,23 +121,35 @@ int main(int argc, char *argv[])
 		strncpy(domain_var, file_buffer_a, strlen(file_buffer_a) - strlen(part01));
 		fprintf(pFout_log, "%s\t", domain_var);
 		
+#if DEBUG
+		printf("Difference1: %d\n", strlen(file_buffer_a) - strlen(part01));
+#endif
+		
 		strncpy(file_buffer_b, file_buffer_a, strlen(part01));
 		
 /* ---- PORT ---- */
 		
-		part02 = strchr(file_buffer, ' ');
+		part02 = strchr(file_buffer_b, ' ');
 		
 		strncpy(port_var, file_buffer_b, strlen(part01) - strlen(part02));
 		fprintf(pFout_log, "%s\t", port_var);
+		
+#if DEBUG
+		printf("Difference2: %d\n", strlen(part01) - strlen(part02));
+#endif
 		
 		strncpy(file_buffer_a, file_buffer_b, strlen(part02));
 		
 /* ---- IP ---- */
 		
-		part03 = strchr(file_buffer, ' ');
+		part03 = strchr(file_buffer_a, ' ');
 		
 		strncpy(ip_var, file_buffer_a, strlen(part02) - strlen(part03));
 		fprintf(pFout_log, "%s\t", ip_var);
+		
+#if DEBUG
+		printf("Difference3: %d\n", strlen(part02) - strlen(part03));
+#endif
 		
 		strncpy(file_buffer_b, file_buffer_a, strlen(part03));
 		
@@ -148,6 +160,10 @@ int main(int argc, char *argv[])
 		
 		strncpy(time_var, file_buffer_b, strlen(part04) - strlen(part05));
 		fprintf(pFout_log, "%s\t", time_var);
+		
+#if DEBUG
+		printf("Difference4: %d\n", strlen(part04) - strlen(part05));
+#endif
 		
 		strncpy(file_buffer_a, file_buffer_b, strlen(part05));
 		
@@ -162,6 +178,10 @@ int main(int argc, char *argv[])
 		strncpy(url_var, file_buffer_a, strlen(part06) - strlen(part07));
 		fprintf(pFout_log, "%s\t", url_var);
 		
+#if DEBUG
+		printf("Difference5: %d\n", strlen(part06) - strlen(part07));
+#endif
+		
 		strncpy(file_buffer_b, file_buffer_a, strlen(part07));
 		
 /* ---- USER AGENT ---- */
@@ -171,6 +191,10 @@ int main(int argc, char *argv[])
 		
 		strncpy(user_ag_var, file_buffer_b, strlen(part08) - strlen(part09));
 		fprintf(pFout_log, "%s\t", user_ag_var);
+		
+#if DEBUG
+		printf("Difference6: %d\n", strlen(part08) - strlen(part09));
+#endif
 		
 		strncpy(file_buffer_a, file_buffer_b, strlen(part09));
 		
@@ -182,7 +206,11 @@ int main(int argc, char *argv[])
 		strncpy(os_var, file_buffer_a, strlen(part10) - strlen(part11));
 		fprintf(pFout_log, "%s\n", os_var);
 		
-		strncpy(file_buffer_b, file_buffer_a, strlen(file_buffer) - strlen(part11));
+#if DEBUG
+		printf("Difference7: %d\n", strlen(part10) - strlen(part11));
+#endif
+		
+		strncpy(file_buffer_b, file_buffer_a, strlen(part11));
 		
 		part12 = strchr(file_buffer_b, '\n');
 		
