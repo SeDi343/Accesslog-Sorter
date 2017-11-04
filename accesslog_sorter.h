@@ -22,6 +22,7 @@
 
 #define DEBUG 0
 #define URL_COUNT 3
+#define MAXSIZE 500
 
 /*------------------------------------------------------------------*/
 /* T E R M I N A L   A N S I     F O R M A T I O N                  */

@@ -34,13 +34,13 @@ int main(int argc, char *argv[])
 	char *part11 = NULL; //OS )
 	char *part12 = NULL; //Linebreak \n
 	
-	char domain[100];
-	char port[100];
-	char ip[100];
-	char time[100];
-	char url[100];
-	char user_ag[100];
-	char os[100];
+	char domain_var[MAXSIZE];
+	char port_var[MAXSIZE];
+	char ip_var[MAXSIZE];
+	char time_var[MAXSIZE];
+	char url_var[MAXSIZE];
+	char user_ag_var[MAXSIZE];
+	char os_var[MAXSIZE];
 	
 	clear();
 	
@@ -106,36 +106,44 @@ int main(int argc, char *argv[])
 	
 	while (counter < linebreak_number)
 	{
-		/* ---- DOMAIN ---- */
+/* ---- DOMAIN ---- */
 		
 		part01 = strchr(file_buffer, ':');
 		
-		strncpy(domain, file_buffer, strlen(file_buffer) - strlen(part01));
-		fprintf(pFout_log, "%s\t", domain);
+		strncpy(domain_var, file_buffer, strlen(file_buffer) - strlen(part01));
+		fprintf(pFout_log, "%s\t", domain_var);
 		
-		/* ---- PORT ---- */
+		strncpy(file_buffer, file_buffer, strlen(part01));
+		
+/* ---- PORT ---- */
 		
 		part02 = strchr(file_buffer, ' ');
 		
-		strncpy(port, file_buffer, strlen(part01) - strlen(part02));
-		fprintf(pFout_log, "%s\t", port);
+		strncpy(port_var, file_buffer, strlen(part01) - strlen(part02));
+		fprintf(pFout_log, "%s\t", port_var);
 		
-		/* ---- IP ---- */
+		strncpy(file_buffer, file_buffer, strlen(part02));
+		
+/* ---- IP ---- */
 		
 		part03 = strchr(file_buffer, ' ');
 		
-		strncpy(ip, file_buffer, strlen(part02) - strlen(part03));
-		fprintf(pFout_log, "%s\t", ip);
+		strncpy(ip_var, file_buffer, strlen(part02) - strlen(part03));
+		fprintf(pFout_log, "%s\t", ip_var);
 		
-		/* ----- TIME ---- */
+		strncpy(file_buffer, file_buffer, strlen(part03));
+		
+/* ----- TIME ---- */
 		
 		part04 = strchr(file_buffer, '[');
 		part05 = strchr(file_buffer, ' ');
 		
-		strncpy(time, file_buffer, strlen(part04) - strlen(part05));
-		fprintf(pFout_log, "%s\t", time);
+		strncpy(time_var, file_buffer, strlen(part04) - strlen(part05));
+		fprintf(pFout_log, "%s\t", time_var);
 		
-		/* ---- URL ---- */
+		strncpy(file_buffer, file_buffer, strlen(part05));
+		
+/* ---- URL ---- */
 		
 		for (i = 0; i < URL_COUNT; i++)
 		{
@@ -143,26 +151,34 @@ int main(int argc, char *argv[])
 		}
 		part07 = strchr(file_buffer, '"');
 		
-		strncpy(url, file_buffer, strlen(part06) - strlen(part07));
-		fprintf(pFout_log, "%s\t", url);
+		strncpy(url_var, file_buffer, strlen(part06) - strlen(part07));
+		fprintf(pFout_log, "%s\t", url_var);
 		
-		/* ---- USER AGENT ---- */
+		strncpy(file_buffer, file_buffer, strlen(part07));
+		
+/* ---- USER AGENT ---- */
 		
 		part08 = strchr(file_buffer, '"');
 		part09 = strchr(file_buffer, ' ');
 		
-		strncpy(user_ag, file_buffer, strlen(part08) - strlen(part09));
-		fprintf(pFout_log, "%s\t", user_ag);
+		strncpy(user_ag_var, file_buffer, strlen(part08) - strlen(part09));
+		fprintf(pFout_log, "%s\t", user_ag_var);
 		
-		/* ---- OS ---- */
+		strncpy(file_buffer, file_buffer, strlen(part09));
+		
+/* ---- OS ---- */
 		
 		part10 = strchr(file_buffer, '(');
 		part11 = strchr(file_buffer, ')');
 		
-		strncpy(os, file_buffer, strlen(part10) - strlen(part11));
-		fprintf(pFout_log, "%s\n", os);
+		strncpy(os_var, file_buffer, strlen(part10) - strlen(part11));
+		fprintf(pFout_log, "%s\n", os_var);
+		
+		strncpy(file_buffer, file_buffer, strlen(file_buffer) - strlen(part11));
 		
 		part12 = strchr(file_buffer, '\n');
+		
+		strncpy(file_buffer, file_buffer, strlen(part12));
 		
 		counter++;
 	}
