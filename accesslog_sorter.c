@@ -100,13 +100,15 @@ int main(int argc, char *argv[])
 	}
 	fclose(pFin_log);
 	
+	linebreak_number = count_characters(file_buffer, '\n');
+	printf("Linebreak:\t"BOLD"%d"RESET"\n"
+		   "Total Chars:\t"BOLD"%d"RESET"\n", linebreak_number, strlen(file_buffer));
+	
 /* ---- Whole file is now in buffer, continue with writing file style ---- */
 	
-	pFout_log = fopen("/home/server/http-serverlog.txt", "w");
+	pFout_log = fopen("/home/server/http-server.log", "wb");
 	
 	fputs("Domain\tPort\tIP-Adress\tTimestamp\tURL\tUser-Agent\tOS", pFout_log);
-	
-	linebreak_number = count_characters(file_buffer, '\n');
 	
 	strncpy(file_buffer_a, file_buffer, strlen(file_buffer));
 	
