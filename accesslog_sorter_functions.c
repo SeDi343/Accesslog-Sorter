@@ -51,3 +51,18 @@ void helpdesk_1(void)
 	printf(BOLDRED ITALIC"*** DEBUG MODE ACTIVE ***\n\n"RESET);
 #endif
 }
+
+/* ---- COUNT CHARACTER ---- */
+
+int count_characters(const char *str, char character)
+{
+	const char *p = str;
+	int count = 0;
+	
+	do {
+		if (*p == character)
+			count++;
+	} while (*(p++));
+	
+	return count;
+}

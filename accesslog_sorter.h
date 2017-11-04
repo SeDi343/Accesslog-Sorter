@@ -21,6 +21,7 @@
 #include <unistd.h>
 
 #define DEBUG 0
+#define URL_COUNT 3
 
 /*------------------------------------------------------------------*/
 /* T E R M I N A L   A N S I     F O R M A T I O N                  */
@@ -93,5 +94,6 @@
 void clear(void);
 void clearNoHelp(void);
 void helpdesk_1(void);
+int count_characters(const char *str, char character);
 
 #endif /* accesslog_sorter_h */
