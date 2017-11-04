@@ -9,7 +9,7 @@
 
 #include "accesslog_sorter.h"
 
-int main(void)
+int main(int argc, char *argv[])
 {
 	FILE* pFin_log = NULL;
 	FILE* pFout_log = NULL;
@@ -46,7 +46,7 @@ int main(void)
 	
 /* ---- Open File ---- */
 	
-	pFin_log = fopen("/var/log/apache2/other_vhosts_access.log", "rb");
+	pFin_log = fopen("/var/log/apache2/other_vhosts_access.log", "r");
 	if (pFin_log == NULL)
 	{
 		clear();
@@ -98,7 +98,7 @@ int main(void)
 	
 /* ---- Whole file is now in buffer, continue with writing file style ---- */
 	
-	pFout_log = fopen("/home/$USER/http-serverlog.txt", "wb");
+	pFout_log = fopen("/home/$USER/http-serverlog.txt", "w");
 	
 	fputs("Domain\tPort\tIP-Adress\tTimestamp\tURL\tUser-Agent\tOS", pFout_log);
 	
