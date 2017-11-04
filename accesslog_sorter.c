@@ -77,5 +77,6 @@ int main(void)
 	
 	fputs("Domain\tPort\tIP-Adress\tTimestamp\tURL\tUser-Agent\tOS", pFout_log);
 	
+	fclose(pFout_log);
 	free(file_buffer);
 }
