@@ -131,11 +131,11 @@ int main(int argc, char *argv[])
 		
 		part02 = strchr(file_buffer_b, ' ');
 		
-		strncpy(port_var, file_buffer_b, strlen(part01) - strlen(part02));
+		strncpy(port_var, file_buffer_b, strlen(file_buffer_b) - strlen(part02));
 		fprintf(pFout_log, "%s\t", port_var);
 		
 #if DEBUG
-		printf("Difference2: %d\n", strlen(part01) - strlen(part02));
+		printf("Difference2: %d\n", strlen(file_buffer_b) - strlen(part02));
 #endif
 		
 		strncpy(file_buffer_a, file_buffer_b, strlen(part02));
@@ -144,11 +144,11 @@ int main(int argc, char *argv[])
 		
 		part03 = strchr(file_buffer_a, ' ');
 		
-		strncpy(ip_var, file_buffer_a, strlen(part02) - strlen(part03));
+		strncpy(ip_var, file_buffer_a, strlen(file_buffer_a) - strlen(part03));
 		fprintf(pFout_log, "%s\t", ip_var);
 		
 #if DEBUG
-		printf("Difference3: %d\n", strlen(part02) - strlen(part03));
+		printf("Difference3: %d\n", strlen(file_buffer_a) - strlen(part03));
 #endif
 		
 		strncpy(file_buffer_b, file_buffer_a, strlen(part03));
