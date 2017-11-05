@@ -126,6 +126,7 @@ int main(int argc, char *argv[])
 #endif
 		
 		strncpy(file_buffer_b, file_buffer_a, strlen(part01));
+		memset(file_buffer_a, 0, strlen(file_buffer_a));
 		
 /* ---- PORT ---- */
 		
@@ -139,6 +140,7 @@ int main(int argc, char *argv[])
 #endif
 		
 		strncpy(file_buffer_a, file_buffer_b, strlen(part02));
+		memset(file_buffer_b, 0, strlen(file_buffer_b));
 		
 /* ---- IP ---- */
 		
@@ -152,6 +154,7 @@ int main(int argc, char *argv[])
 #endif
 		
 		strncpy(file_buffer_b, file_buffer_a, strlen(part03));
+		memset(file_buffer_a, 0, strlen(file_buffer_a));
 		
 /* ----- TIME ---- */
 		
@@ -166,6 +169,7 @@ int main(int argc, char *argv[])
 #endif
 		
 		strncpy(file_buffer_a, file_buffer_b, strlen(part05));
+		memset(file_buffer_b, 0, strlen(file_buffer_b));
 		
 /* ---- URL ---- */
 		
@@ -183,6 +187,7 @@ int main(int argc, char *argv[])
 #endif
 		
 		strncpy(file_buffer_b, file_buffer_a, strlen(part07));
+		memset(file_buffer_a, 0, strlen(file_buffer_a));
 		
 /* ---- USER AGENT ---- */
 		
@@ -197,6 +202,7 @@ int main(int argc, char *argv[])
 #endif
 		
 		strncpy(file_buffer_a, file_buffer_b, strlen(part09));
+		memset(file_buffer_b, 0, strlen(file_buffer_b));
 		
 /* ---- OS ---- */
 		
@@ -211,10 +217,12 @@ int main(int argc, char *argv[])
 #endif
 		
 		strncpy(file_buffer_b, file_buffer_a, strlen(part11));
+		memset(file_buffer_a, 0, strlen(file_buffer_a));
 		
 		part12 = strchr(file_buffer_b, '\n');
 		
 		strncpy(file_buffer_a, file_buffer_b, strlen(part12));
+		memset(file_buffer_b, 0, strlen(file_buffer_b));
 		
 		counter++;
 	}
