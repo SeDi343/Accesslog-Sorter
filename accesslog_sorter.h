@@ -23,6 +23,8 @@
 #define DEBUG 1
 #define URL_COUNT 3
 #define MAXSIZE 500
+#define APACHE_LOGFILE "/var/log/apache2/other_vhosts_access.log"
+#define WRITE_FILE "/home/server/http-server.log"
 
 /*------------------------------------------------------------------*/
 /* T E R M I N A L   A N S I     F O R M A T I O N                  */

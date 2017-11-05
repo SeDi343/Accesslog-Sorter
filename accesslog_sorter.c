@@ -48,11 +48,11 @@ int main(int argc, char *argv[])
 	
 /* ---- Open File ---- */
 	
-	pFin_log = fopen("/var/log/apache2/other_vhosts_access.log", "r");
+	pFin_log = fopen(APACHE_LOGFILE, "r");
 	if (pFin_log == NULL)
 	{
 		clear();
-		printf(BOLD"\nERROR: Can not open \"/var/log/apache2/other_vhosts_access.log\"\n"RESET);
+		printf(BOLD"\nERROR: Can not open \""APACHE_LOGFILE"\"\n"RESET);
 		return -1;
 	}
 	
@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
 		if (file_size == -1)
 		{
 			clear();
-			printf(BOLD"\nERROR: Can not read \"/var/log/apache2/other_vhosts_access.log\"\n"RESET);
+			printf(BOLD"\nERROR: Can not read \""APACHE_LOGFILE"\"\n"RESET);
 			fclose(pFin_log);
 			return -1;
 		}
@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
 	
 /* ---- Whole file is now in buffer, continue with writing file style ---- */
 	
-	pFout_log = fopen("/home/server/http-server.log", "wb");
+	pFout_log = fopen(WRITE_FILE, "wb");
 	
 	fputs("Domain\tPort\tIP-Adress\tTimestamp\tURL\tUser-Agent\tOS", pFout_log);
 	
